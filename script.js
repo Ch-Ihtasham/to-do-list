@@ -7,19 +7,24 @@ inputBox.addEventListener('keydown', (e) => {
     }
 })
 function addTask() {
-    if (inputBox.value === '') {
+    if (inputBox.value === ' ') {
         alert('You must Write something!')
     }
     else {
         let li = document.createElement('li')
-        li.innerHTML = inputBox.value;
-        listContainer.appendChild(li);
-        let span = document.createElement('span')
-        span.innerHTML = '\u00d7'
-        li.appendChild(span);
+        li.innerHTML = inputBox.value.trim();
+        if (li.innerHTML = "") {
+            listContainer.appendChild(li);
+            let span = document.createElement('span')
+            span.innerHTML = '\u00d7'
+            li.appendChild(span);
+        }
+        else {
+            alert('You must Write something!')
+        }
 
     }
-    inputBox.value = ''
+    inputBox.value = '' 
     saveData()
 }
 listContainer.addEventListener('click', (e) => {
